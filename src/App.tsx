@@ -73,7 +73,7 @@ const App = () => {
     daysActive: 1
   })
   
-  // New state for manual deal tracking
+  // Enhanced deal tracking with Gong.io-style intelligence
   const [deals, setDeals] = useState([
     {
       id: 1,
@@ -86,13 +86,40 @@ const App = () => {
       closeDate: 'Dec 15',
       risk: 'low',
       notes: 'Strong interest in our enterprise package. Budget approved.',
+      // Gong.io-style enhancements
+      gongScore: 89,
+      dealHealthScore: 92,
+      nextBestAction: 'Send contract with discussed terms',
+      competitorMentioned: 'Salesforce',
+      buyingSignals: ['Budget confirmed', 'Legal review started', 'Implementation timeline discussed'],
+      riskFactors: ['Contract terms negotiation'],
+      championStrength: 'Very Strong',
+      decisionCriteria: ['ROI', 'Integration capabilities', 'Support quality'],
+      stakeholders: [
+        { name: 'John Smith', role: 'VP Sales', influence: 'High', sentiment: 'Positive' },
+        { name: 'Lisa Chen', role: 'IT Director', influence: 'Medium', sentiment: 'Neutral' }
+      ],
+      revenueIntelligence: {
+        forecastCategory: 'Commit',
+        dealVelocity: 32, // days
+        timeInStage: 8,
+        avgTimeInStage: 12
+      },
       calls: [
         {
           id: 1,
           date: '2024-01-15',
           duration: '45:30',
           transcript: 'Great call discussing their automation needs...',
-          aiInsights: ['Budget confirmed at $100K-150K', 'Decision maker identified', 'Timeline: Q1 2024']
+          aiInsights: ['Budget confirmed at $100K-150K', 'Decision maker identified', 'Timeline: Q1 2024'],
+          gongAnalysis: {
+            talkTimeRatio: 0.35, // 35% rep talk time
+            questionsAsked: 14,
+            sentimentScore: 0.82,
+            keyMoments: ['Budget discussion at 12:30', 'Competitor mention at 28:45'],
+            coachingInsights: ['Great discovery questions', 'Could improve closing technique'],
+            nextSteps: ['Send proposal by Friday', 'Schedule technical demo']
+          }
         }
       ]
     },
@@ -107,6 +134,23 @@ const App = () => {
       closeDate: 'Jan 8',
       risk: 'medium',
       notes: 'Waiting for technical review from their team.',
+      gongScore: 72,
+      dealHealthScore: 68,
+      nextBestAction: 'Follow up on technical review status',
+      competitorMentioned: 'HubSpot',
+      buyingSignals: ['Technical requirements shared', 'Timeline discussed'],
+      riskFactors: ['Long decision cycle', 'Budget not confirmed'],
+      championStrength: 'Medium',
+      decisionCriteria: ['Price', 'Ease of use', 'Implementation time'],
+      stakeholders: [
+        { name: 'Sarah Johnson', role: 'Marketing Director', influence: 'High', sentiment: 'Positive' }
+      ],
+      revenueIntelligence: {
+        forecastCategory: 'Best Case',
+        dealVelocity: 45,
+        timeInStage: 12,
+        avgTimeInStage: 10
+      },
       calls: []
     },
     {
@@ -120,9 +164,62 @@ const App = () => {
       closeDate: 'Feb 20',
       risk: 'high',
       notes: 'Large opportunity but competitive landscape.',
+      gongScore: 58,
+      dealHealthScore: 45,
+      nextBestAction: 'Identify and engage economic buyer',
+      competitorMentioned: 'Multiple (Salesforce, HubSpot, Pipedrive)',
+      buyingSignals: ['Large budget available', 'Urgency mentioned'],
+      riskFactors: ['Multiple competitors', 'No clear champion', 'Complex decision process'],
+      championStrength: 'Weak',
+      decisionCriteria: ['Enterprise features', 'Scalability', 'Security'],
+      stakeholders: [
+        { name: 'Mike Chen', role: 'Operations Manager', influence: 'Medium', sentiment: 'Neutral' }
+      ],
+      revenueIntelligence: {
+        forecastCategory: 'Pipeline',
+        dealVelocity: 78,
+        timeInStage: 5,
+        avgTimeInStage: 15
+      },
       calls: []
     }
   ])
+  
+  // Advanced Revenue Intelligence (Gong.io-style)
+  const [revenueIntelligence, setRevenueIntelligence] = useState({
+    pipelineHealth: 78,
+    forecastAccuracy: 94, // Better than Gong's typical 85%
+    dealVelocity: 42, // days - optimized
+    winRate: 38, // Improved from industry average
+    averageDealSize: 125000,
+    quarterlyTrend: '+15%', // Better growth
+    riskDeals: 2,
+    commitDeals: 12,
+    bestCaseRevenue: 2800000,
+    commitRevenue: 2100000,
+    worstCaseRevenue: 1400000,
+    // Enhanced metrics beyond Gong
+    aiAccuracy: 96,
+    coachingImpact: '+23%',
+    teamProductivity: '+31%'
+  })
+  
+  // Conversation Intelligence (Enhanced beyond Gong)
+  const [conversationData, setConversationData] = useState({
+    totalCalls: 234, // Higher volume
+    avgTalkTime: 38, // minutes - optimized
+    talkTimeRatio: 0.32, // 32% rep talk time - better than Gong's 40%
+    questionsAsked: 15, // More discovery questions
+    sentimentScore: 0.79, // Higher positive sentiment
+    competitorMentions: 12,
+    pricingDiscussions: 34,
+    nextStepsIdentified: 92, // Higher percentage
+    // Advanced metrics
+    objectionHandlingRate: 0.87,
+    closingAttempts: 156,
+    followUpCompliance: 0.94,
+    championIdentification: 0.78
+  })
   
   const [newDeal, setNewDeal] = useState({
     company: '',
@@ -928,73 +1025,185 @@ const App = () => {
 
   const renderDashboard = () => (
     <div className="space-y-6">
-      {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
+      {/* Revenue Intelligence Dashboard - Gong.io Style Enhanced */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <Card className="bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-blue-800">Forecast Accuracy</CardTitle>
+            <Target className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$1.2M</div>
-            <p className="text-xs text-muted-foreground">
-              <span className="text-green-600 flex items-center">
+            <div className="text-2xl font-bold text-blue-900">{revenueIntelligence.forecastAccuracy}%</div>
+            <p className="text-xs text-blue-700">
+              <span className="flex items-center">
                 <ArrowUp className="h-3 w-3 mr-1" />
-                +12.5%
+                +9% vs Gong's 85%
               </span>
-              from last month
+              industry leading
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-r from-green-50 to-green-100 border-green-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Calls This Week</CardTitle>
-            <Phone className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-green-800">Pipeline Health</CardTitle>
+            <Activity className="h-4 w-4 text-green-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">127</div>
-            <p className="text-xs text-muted-foreground">
-              <span className="text-green-600 flex items-center">
+            <div className="text-2xl font-bold text-green-900">{revenueIntelligence.pipelineHealth}%</div>
+            <p className="text-xs text-green-700">
+              <span className="flex items-center">
                 <ArrowUp className="h-3 w-3 mr-1" />
-                +8.2%
+                {revenueIntelligence.quarterlyTrend}
               </span>
-              from last week
+              quarterly growth
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-r from-purple-50 to-purple-100 border-purple-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Win Rate</CardTitle>
-            <Target className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-purple-800">Deal Velocity</CardTitle>
+            <Clock className="h-4 w-4 text-purple-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">68%</div>
-            <p className="text-xs text-muted-foreground">
-              <span className="text-red-600 flex items-center">
+            <div className="text-2xl font-bold text-purple-900">{revenueIntelligence.dealVelocity} days</div>
+            <p className="text-xs text-purple-700">
+              <span className="flex items-center">
                 <ArrowDown className="h-3 w-3 mr-1" />
-                -2.1%
+                -8 days faster
               </span>
-              from last month
+              than industry avg
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-r from-orange-50 to-orange-100 border-orange-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Avg Deal Size</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-orange-800">Win Rate</CardTitle>
+            <Award className="h-4 w-4 text-orange-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$85K</div>
-            <p className="text-xs text-muted-foreground">
-              <span className="text-green-600 flex items-center">
+            <div className="text-2xl font-bold text-orange-900">{revenueIntelligence.winRate}%</div>
+            <p className="text-xs text-orange-700">
+              <span className="flex items-center">
                 <ArrowUp className="h-3 w-3 mr-1" />
-                +5.4%
+                +13% improvement
               </span>
-              from last month
+              with AI coaching
             </p>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-to-r from-indigo-50 to-indigo-100 border-indigo-200">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium text-indigo-800">AI Accuracy</CardTitle>
+            <Zap className="h-4 w-4 text-indigo-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-indigo-900">{revenueIntelligence.aiAccuracy}%</div>
+            <p className="text-xs text-indigo-700">
+              <span className="flex items-center">
+                <Sparkles className="h-3 w-3 mr-1" />
+                Echo AI advantage
+              </span>
+              vs competitors
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Revenue Forecast - Gong.io Style */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <Card className="lg:col-span-2">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="flex items-center">
+                <TrendingUp className="h-5 w-5 mr-2 text-blue-600" />
+                Revenue Forecast Intelligence
+              </CardTitle>
+              <Badge className="bg-blue-100 text-blue-800">Q1 2024</Badge>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-3 gap-4 mb-6">
+              <div className="text-center p-4 bg-green-50 rounded-lg border border-green-200">
+                <div className="text-sm text-green-600 mb-1">Commit</div>
+                <div className="text-2xl font-bold text-green-800">
+                  ${(revenueIntelligence.commitRevenue / 1000000).toFixed(1)}M
+                </div>
+                <div className="text-xs text-green-600">{revenueIntelligence.commitDeals} deals</div>
+              </div>
+              <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="text-sm text-blue-600 mb-1">Best Case</div>
+                <div className="text-2xl font-bold text-blue-800">
+                  ${(revenueIntelligence.bestCaseRevenue / 1000000).toFixed(1)}M
+                </div>
+                <div className="text-xs text-blue-600">Pipeline upside</div>
+              </div>
+              <div className="text-center p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                <div className="text-sm text-yellow-600 mb-1">At Risk</div>
+                <div className="text-2xl font-bold text-yellow-800">
+                  ${((revenueIntelligence.bestCaseRevenue - revenueIntelligence.worstCaseRevenue) / 1000000).toFixed(1)}M
+                </div>
+                <div className="text-xs text-yellow-600">{revenueIntelligence.riskDeals} deals</div>
+              </div>
+            </div>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between text-sm">
+                <span>Forecast Confidence</span>
+                <span className="font-medium">{revenueIntelligence.forecastAccuracy}%</span>
+              </div>
+              <Progress value={revenueIntelligence.forecastAccuracy} className="h-2" />
+              <div className="flex items-center justify-between text-xs text-gray-500">
+                <span>Based on {conversationData.totalCalls} analyzed conversations</span>
+                <span>Updated 2 hours ago</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <Mic className="h-5 w-5 mr-2 text-purple-600" />
+              Conversation Intelligence
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-sm">Talk Time Ratio</span>
+                <div className="flex items-center space-x-2">
+                  <Progress value={conversationData.talkTimeRatio * 100} className="w-16 h-2" />
+                  <span className="text-sm font-medium">{Math.round(conversationData.talkTimeRatio * 100)}%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm">Questions Asked</span>
+                <span className="text-sm font-medium">{conversationData.questionsAsked}/call</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm">Sentiment Score</span>
+                <div className="flex items-center space-x-2">
+                  <Progress value={conversationData.sentimentScore * 100} className="w-16 h-2" />
+                  <span className="text-sm font-medium">{Math.round(conversationData.sentimentScore * 100)}%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm">Next Steps ID'd</span>
+                <span className="text-sm font-medium">{conversationData.nextStepsIdentified}%</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm">Champion ID Rate</span>
+                <span className="text-sm font-medium">{Math.round(conversationData.championIdentification * 100)}%</span>
+              </div>
+              <div className="pt-2 border-t">
+                <div className="text-xs text-gray-500 mb-2">AI Coaching Impact</div>
+                <div className="text-lg font-bold text-green-600">{revenueIntelligence.coachingImpact}</div>
+                <div className="text-xs text-gray-500">performance improvement</div>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -1392,14 +1601,39 @@ const App = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="font-semibold text-lg">{deal.company}</h3>
+                  <div className="flex items-center space-x-3 mb-2">
+                    <h3 className="font-semibold text-lg">{deal.company}</h3>
+                    <Badge variant="outline" className="text-xs">
+                      Gong Score: {deal.gongScore}
+                    </Badge>
+                    <Badge variant={deal.revenueIntelligence?.forecastCategory === 'Commit' ? 'default' : 
+                                   deal.revenueIntelligence?.forecastCategory === 'Best Case' ? 'secondary' : 'outline'}>
+                      {deal.revenueIntelligence?.forecastCategory}
+                    </Badge>
+                  </div>
                   <p className="text-gray-600">{deal.contact} • {deal.email}</p>
                   {deal.phone && <p className="text-sm text-gray-500">📞 {deal.phone}</p>}
+                  <div className="flex items-center space-x-4 mt-2">
+                    <div className="flex items-center space-x-1">
+                      <span className="text-xs text-gray-500">Champion:</span>
+                      <Badge variant={deal.championStrength === 'Very Strong' ? 'default' : 
+                                     deal.championStrength === 'Strong' ? 'secondary' : 
+                                     deal.championStrength === 'Medium' ? 'outline' : 'destructive'} 
+                             className="text-xs">
+                        {deal.championStrength}
+                      </Badge>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <span className="text-xs text-gray-500">Velocity:</span>
+                      <span className="text-xs font-medium">{deal.revenueIntelligence?.dealVelocity}d</span>
+                    </div>
+                  </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="text-right">
                     <div className="font-bold text-xl">{deal.value}</div>
                     <div className="text-sm text-gray-500">{deal.stage}</div>
+                    <div className="text-xs text-gray-400">Health: {deal.dealHealthScore}%</div>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Progress value={deal.probability} className="w-16 h-2" />
@@ -1448,6 +1682,79 @@ const App = () => {
                   <p className="text-sm text-blue-700">{deal.painPoints}</p>
                 </div>
               )}
+
+              {/* Gong.io-style Intelligence Sections */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div className="p-3 bg-green-50 rounded-lg border border-green-200">
+                  <h4 className="font-medium text-green-800 mb-2 flex items-center">
+                    <CheckCircle className="h-4 w-4 mr-1" />
+                    Buying Signals
+                  </h4>
+                  <ul className="text-sm text-green-700 space-y-1">
+                    {deal.buyingSignals?.map((signal, idx) => (
+                      <li key={idx}>• {signal}</li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="p-3 bg-yellow-50 rounded-lg border border-yellow-200">
+                  <h4 className="font-medium text-yellow-800 mb-2 flex items-center">
+                    <AlertTriangle className="h-4 w-4 mr-1" />
+                    Risk Factors
+                  </h4>
+                  <ul className="text-sm text-yellow-700 space-y-1">
+                    {deal.riskFactors?.map((risk, idx) => (
+                      <li key={idx}>• {risk}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Stakeholder Mapping */}
+              {deal.stakeholders && deal.stakeholders.length > 0 && (
+                <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <h4 className="font-medium text-blue-800 mb-2 flex items-center">
+                    <Users className="h-4 w-4 mr-1" />
+                    Stakeholder Map
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {deal.stakeholders.map((stakeholder, idx) => (
+                      <div key={idx} className="flex items-center justify-between p-2 bg-white rounded border">
+                        <div>
+                          <div className="text-sm font-medium">{stakeholder.name}</div>
+                          <div className="text-xs text-gray-500">{stakeholder.role}</div>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Badge variant={stakeholder.influence === 'High' ? 'default' : 
+                                         stakeholder.influence === 'Medium' ? 'secondary' : 'outline'} 
+                                 className="text-xs">
+                            {stakeholder.influence}
+                          </Badge>
+                          <Badge variant={stakeholder.sentiment === 'Positive' ? 'default' : 
+                                         stakeholder.sentiment === 'Neutral' ? 'secondary' : 'destructive'} 
+                                 className="text-xs">
+                            {stakeholder.sentiment}
+                          </Badge>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Next Best Action */}
+              <div className="mb-4 p-3 bg-purple-50 rounded-lg border border-purple-200">
+                <h4 className="font-medium text-purple-800 mb-1 flex items-center">
+                  <Zap className="h-4 w-4 mr-1" />
+                  AI Recommended Next Action
+                </h4>
+                <p className="text-sm text-purple-700">{deal.nextBestAction}</p>
+                {deal.competitorMentioned && (
+                  <div className="mt-2 text-xs text-purple-600">
+                    <span className="font-medium">Competitor mentioned:</span> {deal.competitorMentioned}
+                  </div>
+                )}
+              </div>
 
               {deal.notes && (
                 <div className="mb-4 p-3 bg-gray-50 rounded-lg">
@@ -1611,18 +1918,64 @@ const App = () => {
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <div className="p-3 bg-green-50 rounded-lg">
-                  <h4 className="font-medium text-green-800 mb-1">Key Insights</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div className="p-3 bg-green-50 rounded-lg border border-green-200">
+                  <h4 className="font-medium text-green-800 mb-2 flex items-center">
+                    <CheckCircle className="h-4 w-4 mr-1" />
+                    Key Insights
+                  </h4>
                   <ul className="text-sm text-green-700 space-y-1">
                     <li>• Budget confirmed: $50K-100K range</li>
                     <li>• Decision timeline: Q1 2024</li>
                     <li>• Strong buying signals detected</li>
+                    <li>• Champion identified: IT Director</li>
                   </ul>
                 </div>
-                <div className="p-3 bg-blue-50 rounded-lg">
-                  <h4 className="font-medium text-blue-800 mb-1">Next Steps</h4>
-                  <p className="text-sm text-blue-700">Schedule technical demo with IT team. Send pricing proposal by Friday.</p>
+                
+                <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <h4 className="font-medium text-blue-800 mb-2 flex items-center">
+                    <Zap className="h-4 w-4 mr-1" />
+                    AI Coaching
+                  </h4>
+                  <ul className="text-sm text-blue-700 space-y-1">
+                    <li>• Great discovery questions</li>
+                    <li>• Good active listening</li>
+                    <li>• Improve closing technique</li>
+                    <li>• Ask for commitment earlier</li>
+                  </ul>
+                </div>
+
+                <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
+                  <h4 className="font-medium text-purple-800 mb-2 flex items-center">
+                    <Target className="h-4 w-4 mr-1" />
+                    Next Steps
+                  </h4>
+                  <ul className="text-sm text-purple-700 space-y-1">
+                    <li>• Schedule technical demo</li>
+                    <li>• Send pricing proposal by Friday</li>
+                    <li>• Follow up with IT Director</li>
+                    <li>• Prepare ROI calculator</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Advanced Conversation Metrics */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 p-3 bg-gray-50 rounded-lg">
+                <div className="text-center">
+                  <div className="text-lg font-bold text-blue-600">32%</div>
+                  <div className="text-xs text-gray-500">Talk Time</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-lg font-bold text-green-600">14</div>
+                  <div className="text-xs text-gray-500">Questions</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-lg font-bold text-purple-600">82%</div>
+                  <div className="text-xs text-gray-500">Sentiment</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-lg font-bold text-orange-600">3</div>
+                  <div className="text-xs text-gray-500">Key Moments</div>
                 </div>
               </div>
 
