@@ -744,9 +744,9 @@ const App = () => {
         'Mobile App Access'
       ],
       pricing: {
-        biweekly: { amount: 19, priceId: 'price_1RpbngLi6PWU790o5V3IeQrw', savings: 0 },
+        biweekly: { amount: 12, priceId: 'price_1RpbngLi6PWU790o5V3IeQrw', savings: 0 },
         monthly: { amount: 19.99, priceId: 'price_1RpcA4Li6PWU790oAOBAAoQx', savings: 8 },
-        annual: { amount: 350, priceId: 'price_1RpbnnLi6PWU790oecnqKpL6', savings: 70 }
+        annual: { amount: 199, priceId: 'price_1RpbnnLi6PWU790oecnqKpL6', savings: 41 }
       }
     },
     business: {
@@ -765,9 +765,9 @@ const App = () => {
         'White-label Options'
       ],
       pricing: {
-        biweekly: { amount: 49, priceId: 'price_1RpbnqLi6PWU790oasRDfIS7', savings: 0 },
-        monthly: { amount: 89, priceId: 'price_1RpbnuLi6PWU790oUBFJzlJR', savings: 19 },
-        annual: { amount: 890, priceId: 'price_1RpbnxLi6PWU790oWaKsDp79', savings: 178 }
+        biweekly: { amount: 29, priceId: 'price_1RpbnqLi6PWU790oasRDfIS7', savings: 0 },
+        monthly: { amount: 49, priceId: 'price_1RpbnuLi6PWU790oUBFJzlJR', savings: 9 },
+        annual: { amount: 499, priceId: 'price_1RpbnxLi6PWU790oWaKsDp79', savings: 89 }
       }
     }
   }
@@ -2086,10 +2086,87 @@ const App = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold">AI Coaching & Training</h2>
-        <Button className="bg-blue-600 hover:bg-blue-700">
-          <Lightbulb className="h-4 w-4 mr-2" />
-          Get AI Insights
-        </Button>
+        <div className="flex items-center space-x-2">
+          <Button variant="outline" size="sm">
+            <Download className="h-4 w-4 mr-2" />
+            Export Report
+          </Button>
+          <Button className="bg-blue-600 hover:bg-blue-700">
+            <Lightbulb className="h-4 w-4 mr-2" />
+            Get AI Insights
+          </Button>
+        </div>
+      </div>
+
+      {/* Performance Overview */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Overall Score</CardTitle>
+            <Award className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">87</div>
+            <p className="text-xs text-muted-foreground">
+              <span className="text-green-600 flex items-center">
+                <ArrowUp className="h-3 w-3 mr-1" />
+                +5 points
+              </span>
+              from last week
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Talk Time Ratio</CardTitle>
+            <Mic className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">42%</div>
+            <p className="text-xs text-muted-foreground">
+              <span className="text-yellow-600 flex items-center">
+                <TrendingDown className="h-3 w-3 mr-1" />
+                Target: 30-40%
+              </span>
+              Slightly high
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Questions Asked</CardTitle>
+            <MessageSquare className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">8.2</div>
+            <p className="text-xs text-muted-foreground">
+              <span className="text-green-600 flex items-center">
+                <ArrowUp className="h-3 w-3 mr-1" />
+                +1.2
+              </span>
+              per call average
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Sentiment Score</CardTitle>
+            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">78%</div>
+            <p className="text-xs text-muted-foreground">
+              <span className="text-green-600 flex items-center">
+                <ArrowUp className="h-3 w-3 mr-1" />
+                +3%
+              </span>
+              positive sentiment
+            </p>
+          </CardContent>
+        </Card>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -2097,26 +2174,60 @@ const App = () => {
           <CardHeader>
             <CardTitle className="flex items-center">
               <Zap className="h-5 w-5 mr-2 text-blue-600" />
-              Performance Insights
+              AI Performance Analysis
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="p-4 bg-green-50 rounded-lg">
-                <h4 className="font-medium text-green-800 mb-2">🎯 Strengths</h4>
-                <ul className="text-sm text-green-700 space-y-1">
-                  <li>• Excellent discovery question techniques</li>
-                  <li>• Strong rapport building in first 5 minutes</li>
-                  <li>• Effective objection handling</li>
+                <h4 className="font-medium text-green-800 mb-2 flex items-center">
+                  <CheckCircle className="h-4 w-4 mr-2" />
+                  Top Strengths
+                </h4>
+                <ul className="text-sm text-green-700 space-y-2">
+                  <li className="flex items-start">
+                    <span className="font-medium mr-2">Discovery:</span>
+                    <span>Excellent at uncovering pain points with open-ended questions</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="font-medium mr-2">Rapport:</span>
+                    <span>Strong connection building in first 3-5 minutes</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="font-medium mr-2">Listening:</span>
+                    <span>Good active listening with appropriate follow-up questions</span>
+                  </li>
                 </ul>
               </div>
               <div className="p-4 bg-yellow-50 rounded-lg">
-                <h4 className="font-medium text-yellow-800 mb-2">⚡ Areas for Improvement</h4>
-                <ul className="text-sm text-yellow-700 space-y-1">
-                  <li>• Increase talk time ratio (currently 45%)</li>
-                  <li>• Ask more qualifying questions early</li>
-                  <li>• Improve closing techniques</li>
+                <h4 className="font-medium text-yellow-800 mb-2 flex items-center">
+                  <AlertTriangle className="h-4 w-4 mr-2" />
+                  Growth Opportunities
+                </h4>
+                <ul className="text-sm text-yellow-700 space-y-2">
+                  <li className="flex items-start">
+                    <span className="font-medium mr-2">Qualification:</span>
+                    <span>Ask budget questions earlier in the conversation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="font-medium mr-2">Closing:</span>
+                    <span>More confident trial closes throughout the call</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="font-medium mr-2">Next Steps:</span>
+                    <span>Clearer commitment to specific next actions</span>
+                  </li>
                 </ul>
+              </div>
+              <div className="p-4 bg-blue-50 rounded-lg">
+                <h4 className="font-medium text-blue-800 mb-2 flex items-center">
+                  <Target className="h-4 w-4 mr-2" />
+                  This Week's Focus
+                </h4>
+                <p className="text-sm text-blue-700">
+                  Practice the "Budget Bridge" technique: "To make sure I'm presenting the right solution, 
+                  what budget range were you thinking for solving this challenge?"
+                </p>
               </div>
             </div>
           </CardContent>
@@ -2126,33 +2237,75 @@ const App = () => {
           <CardHeader>
             <CardTitle className="flex items-center">
               <BookOpen className="h-5 w-5 mr-2 text-purple-600" />
-              Training Recommendations
+              Personalized Training
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="p-4 border rounded-lg hover:bg-gray-50">
-                <h4 className="font-medium mb-2">Discovery Call Mastery</h4>
-                <p className="text-sm text-gray-600 mb-2">Learn advanced questioning techniques to uncover pain points faster.</p>
+              <div className="p-4 border-2 border-purple-200 rounded-lg bg-purple-50">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-medium text-purple-800">Recommended: Budget Qualification</h4>
+                  <Badge className="bg-purple-600">Priority</Badge>
+                </div>
+                <p className="text-sm text-purple-700 mb-3">
+                  Master early budget qualification techniques to improve deal quality and close rates.
+                </p>
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline">30 min</Badge>
-                  <Button size="sm">Start Training</Button>
+                  <div className="flex items-center space-x-2">
+                    <Badge variant="outline">25 min</Badge>
+                    <Badge variant="outline">Interactive</Badge>
+                  </div>
+                  <Button size="sm" className="bg-purple-600 hover:bg-purple-700">
+                    Start Now
+                  </Button>
                 </div>
               </div>
-              <div className="p-4 border rounded-lg hover:bg-gray-50">
-                <h4 className="font-medium mb-2">Closing Techniques</h4>
-                <p className="text-sm text-gray-600 mb-2">Master the art of closing deals with confidence and timing.</p>
+
+              <div className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                <h4 className="font-medium mb-2">Advanced Closing Techniques</h4>
+                <p className="text-sm text-gray-600 mb-2">
+                  Learn 7 proven closing methods and when to use each one for maximum effectiveness.
+                </p>
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline">45 min</Badge>
-                  <Button size="sm">Start Training</Button>
+                  <div className="flex items-center space-x-2">
+                    <Badge variant="outline">35 min</Badge>
+                    <Badge variant="outline">Video + Practice</Badge>
+                  </div>
+                  <Button size="sm" variant="outline">
+                    Start Training
+                  </Button>
                 </div>
               </div>
-              <div className="p-4 border rounded-lg hover:bg-gray-50">
-                <h4 className="font-medium mb-2">Objection Handling</h4>
-                <p className="text-sm text-gray-600 mb-2">Turn objections into opportunities with proven frameworks.</p>
+
+              <div className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                <h4 className="font-medium mb-2">Objection Handling Mastery</h4>
+                <p className="text-sm text-gray-600 mb-2">
+                  Turn common objections into opportunities with the HEARD framework.
+                </p>
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline">25 min</Badge>
-                  <Button size="sm">Start Training</Button>
+                  <div className="flex items-center space-x-2">
+                    <Badge variant="outline">30 min</Badge>
+                    <Badge variant="outline">Role Play</Badge>
+                  </div>
+                  <Button size="sm" variant="outline">
+                    Start Training
+                  </Button>
+                </div>
+              </div>
+
+              <div className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                <h4 className="font-medium mb-2">Discovery Question Frameworks</h4>
+                <p className="text-sm text-gray-600 mb-2">
+                  Advanced questioning techniques using SPIN, BANT, and MEDDIC methodologies.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <Badge variant="outline">40 min</Badge>
+                    <Badge variant="outline">Templates</Badge>
+                  </div>
+                  <Button size="sm" variant="outline">
+                    Start Training
+                  </Button>
                 </div>
               </div>
             </div>
@@ -2162,40 +2315,125 @@ const App = () => {
 
       <Card>
         <CardHeader>
-          <CardTitle>Recent Call Analysis</CardTitle>
+          <CardTitle className="flex items-center">
+            <Activity className="h-5 w-5 mr-2 text-green-600" />
+            Recent Call Analysis & Coaching
+          </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            {recentCalls.slice(0, 2).map((call) => (
+          <div className="space-y-6">
+            {recentCalls.slice(0, 3).map((call) => (
               <div key={call.id} className="p-4 border rounded-lg">
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h4 className="font-medium">{call.prospect} - {call.company}</h4>
-                    <p className="text-sm text-gray-500">{call.date}</p>
+                    <h4 className="font-medium text-lg">{call.prospect} - {call.company}</h4>
+                    <div className="flex items-center space-x-4 mt-1">
+                      <p className="text-sm text-gray-500">{call.date} • {call.duration}</p>
+                      <Badge variant={call.sentiment === 'positive' ? 'default' : call.sentiment === 'neutral' ? 'secondary' : 'destructive'}>
+                        {call.sentiment}
+                      </Badge>
+                    </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-lg font-bold">{call.score}</div>
+                    <div className="text-2xl font-bold">{call.score}</div>
                     <div className="text-xs text-gray-500">AI Score</div>
+                    <Progress value={call.score} className="w-16 h-2 mt-1" />
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-3 bg-blue-50 rounded-lg">
-                    <h5 className="font-medium text-blue-800 mb-1">What Went Well</h5>
-                    <ul className="text-sm text-blue-700 space-y-1">
-                      <li>• Strong opening and rapport building</li>
-                      <li>• Good discovery questions</li>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-3 bg-green-50 rounded-lg">
+                    <h5 className="font-medium text-green-800 mb-2 flex items-center">
+                      <CheckCircle className="h-4 w-4 mr-1" />
+                      What Worked Well
+                    </h5>
+                    <ul className="text-sm text-green-700 space-y-1">
+                      <li>• Strong opening with relevant industry insight</li>
+                      <li>• Asked 12 discovery questions</li>
+                      <li>• Good active listening with paraphrasing</li>
+                      <li>• Identified 3 key pain points</li>
                     </ul>
                   </div>
+                  
                   <div className="p-3 bg-orange-50 rounded-lg">
-                    <h5 className="font-medium text-orange-800 mb-1">Coaching Tips</h5>
+                    <h5 className="font-medium text-orange-800 mb-2 flex items-center">
+                      <AlertTriangle className="h-4 w-4 mr-1" />
+                      Areas to Improve
+                    </h5>
                     <ul className="text-sm text-orange-700 space-y-1">
-                      <li>• Ask about budget earlier</li>
-                      <li>• Confirm next steps before ending</li>
+                      <li>• Budget not discussed until 28 minutes</li>
+                      <li>• Missed opportunity for trial close</li>
+                      <li>• Next steps were vague</li>
+                      <li>• Talk time was 48% (target: 30-40%)</li>
                     </ul>
                   </div>
+
+                  <div className="p-3 bg-blue-50 rounded-lg">
+                    <h5 className="font-medium text-blue-800 mb-2 flex items-center">
+                      <Lightbulb className="h-4 w-4 mr-1" />
+                      Coaching Tips
+                    </h5>
+                    <ul className="text-sm text-blue-700 space-y-1">
+                      <li>• Use: "What's your budget for solving this?"</li>
+                      <li>• Try: "How does that sound so far?"</li>
+                      <li>• End with: "Shall we schedule 30 minutes next Tuesday?"</li>
+                      <li>• Practice the 70/30 listening rule</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <Button variant="outline" size="sm">
+                      <Play className="h-4 w-4 mr-2" />
+                      Listen to Call
+                    </Button>
+                    <Button variant="outline" size="sm">
+                      <FileText className="h-4 w-4 mr-2" />
+                      View Transcript
+                    </Button>
+                  </div>
+                  <Button size="sm">
+                    <BookOpen className="h-4 w-4 mr-2" />
+                    Practice Similar Scenario
+                  </Button>
                 </div>
               </div>
             ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Weekly Progress */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center">
+            <TrendingUp className="h-5 w-5 mr-2 text-purple-600" />
+            Weekly Progress & Goals
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg">
+              <h4 className="font-medium text-blue-800 mb-2">Calls This Week</h4>
+              <div className="text-2xl font-bold text-blue-900">12 / 15</div>
+              <Progress value={80} className="mt-2" />
+              <p className="text-sm text-blue-700 mt-1">3 more calls to reach weekly goal</p>
+            </div>
+            <div className="p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-lg">
+              <h4 className="font-medium text-green-800 mb-2">Training Completed</h4>
+              <div className="text-2xl font-bold text-green-900">2 / 3</div>
+              <Progress value={67} className="mt-2" />
+              <p className="text-sm text-green-700 mt-1">1 more module to complete</p>
+            </div>
+            <div className="p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg">
+              <h4 className="font-medium text-purple-800 mb-2">Score Improvement</h4>
+              <div className="text-2xl font-bold text-purple-900">+5 pts</div>
+              <div className="flex items-center mt-2">
+                <ArrowUp className="h-4 w-4 text-purple-600 mr-1" />
+                <span className="text-sm text-purple-700">From last week</span>
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>
